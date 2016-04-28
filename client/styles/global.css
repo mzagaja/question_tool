@@ -41,12 +41,9 @@ a {
 
 .container {
   margin: 0 1em;
-  -webkit-column-width: 20em;
-  /* Ch, Saf, And, BB  */
-  -moz-column-width: 20em;
-  /* Fx */
-  column-width: 20em;
-  /* IE 10, Op 11.1+ */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .formcontainer {

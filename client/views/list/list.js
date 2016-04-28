@@ -42,6 +42,23 @@ Template.list.onRendered(function() {
 	document.title = "Live Question Answer Tool";
 	$('#topinputcontainer').hide();
 	$('head').append('<link rel="alternate" type="application/rss+xml" href="/rss/{{tablename}}"/>');
+	var columns = Math.floor($(window).width() / 324);
+	var questions = $('.question').length;
+	var questions_per_column = questions / columns;
+	var height = 224 * questions_per_column;
+	$('.container').attr("style", "height: " + height + "px");
+	$('.question').each(function( index ) {
+		var this_column = (index % columns) + 1;
+		var order_number = (this_column * questions_per_column) + (index % questions_per_column);
+		$(this).attr("style", "order: " + order_number);
+		console.log("Calculating vars for question " + index);
+		console.log("This column " + this_column);
+		console.log("Order Number " + order_number);
+		console.log("Questions per column " + questions_per_column);
+		console.log(this_column * questions_per_column);
+		console.log("Index " + index);
+		console.log(index % questions_per_column);
+	});
 });
 
 Template.list.helpers({
